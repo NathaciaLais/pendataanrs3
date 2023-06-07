@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#C1E4DB"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Splashscreen">
@@ -9,29 +10,24 @@
         android:id="@+id/tv_logo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/baseline_local_hospital_24"
+        android:src="@drawable/rs_d2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintDimensionRatio="H,2:1"
-        android:layout_marginHorizontal="40dp"
-        app:tint="#2196F3" />
-
-
-
-
+        android:layout_marginHorizontal="40dp"/>
     <TextView
         android:id="@+id/tv_pembuka"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="148dp"
-        android:fontFamily="sans-serif-condensed"
+        android:fontFamily="casual"
         android:text="Health"
         android:textAlignment="center"
         android:textColor="#041CA1"
-        android:textSize="20sp"
-        android:textStyle="bold|italic"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,12 +36,12 @@
         android:id="@+id/tv_slogan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-condensed"
+        android:fontFamily="cursive"
         android:text="Hidup Sehat Bersama Kami"
         android:textAlignment="center"
         android:textColor="#041CA1"
-        android:textSize="20sp"
-        android:textStyle="bold|italic"
+        android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
