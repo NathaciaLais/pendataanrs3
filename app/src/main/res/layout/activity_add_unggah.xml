@@ -22,9 +22,27 @@
                 android:id="@+id/et_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Content"
+                android:hint="Nama Rumah Sakit"
                 android:inputType="none"
                 android:maxLength="180"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_deskripsi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:counterEnabled="true"
+            app:counterMaxLength="250"
+            android:layout_below="@+id/til_content">
+
+            <EditText
+                android:id="@+id/et_deskripsi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Deskripsi"
+                android:inputType="none"
+                android:maxLength="250"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -34,7 +52,7 @@
             android:layout_height="wrap_content"
             android:text="Add"
             android:layout_alignParentEnd="true"
-            android:layout_below="@+id/til_content"
+            android:layout_below="@+id/til_deskripsi"
             android:layout_marginTop="16dp"/>
 
         <ProgressBar
