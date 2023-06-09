@@ -29,12 +29,30 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_deskripsi"
+            android:id="@+id/til_alamat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:counterEnabled="true"
             app:counterMaxLength="250"
             android:layout_below="@+id/til_content">
+
+            <EditText
+                android:id="@+id/et_alamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Alamat"
+                android:inputType="none"
+                android:maxLength="250"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_deskripsi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:counterEnabled="true"
+            app:counterMaxLength="250"
+            android:layout_below="@+id/til_alamat">
 
             <EditText
                 android:id="@+id/et_deskripsi"
@@ -45,6 +63,7 @@
                 android:maxLength="250"/>
 
         </com.google.android.material.textfield.TextInputLayout>
+
 
         <Button
             android:id="@+id/btn_add"
