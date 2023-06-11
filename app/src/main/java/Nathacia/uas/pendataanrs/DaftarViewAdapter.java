@@ -1,4 +1,4 @@
 package Nathacia.uas.pendataanrs;
 
-public class Unggah {
+public class DaftarViewAdapter {
 }
