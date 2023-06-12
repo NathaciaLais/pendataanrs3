@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Utilities {
     public static final String PREFERENCE_FILE_KEY = Utilities.class.getPackage().getName();
-    private static final String BASE_URL="";
+    private static final String BASE_URL="https://post-restapi-five.vercel.app/";
     public static Retrofit retrofit;
 
     public static Retrofit getRetrofit(){
