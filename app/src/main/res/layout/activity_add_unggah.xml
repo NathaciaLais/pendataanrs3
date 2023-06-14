@@ -12,14 +12,14 @@
         android:layout_margin="16dp">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_content"
+            android:id="@+id/til_nama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:counterEnabled="true"
             app:counterMaxLength="180">
 
             <EditText
-                android:id="@+id/et_content"
+                android:id="@+id/et_nama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nama Rumah Sakit"
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             app:counterEnabled="true"
             app:counterMaxLength="250"
-            android:layout_below="@+id/til_content">
+            android:layout_below="@+id/til_nama">
 
             <EditText
                 android:id="@+id/et_alamat"

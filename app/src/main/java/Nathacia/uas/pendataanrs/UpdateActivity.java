@@ -1,59 +1,74 @@
 package Nathacia.uas.pendataanrs;
 
+import android.os.Bundle;
+
+import com.google.android.material.snackbar.Snackbar;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 
-import Nathacia.uas.pendataanrs.databinding.ActivityAddUnggahBinding;
+import androidx.core.view.WindowCompat;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
-public class AddUnggahActivity extends AppCompatActivity {
-    private ActivityAddUnggahBinding binding;
+import Nathacia.uas.pendataanrs.databinding.ActivityUpdateBinding;
 
-    @Override
+public class UpdateActivity extends AppCompatActivity {
+
+    private ActivityUpdateBinding binding;
+    private Daftar daftar;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityAddUnggahBinding.inflate(getLayoutInflater());
+        binding = ActivityUpdateBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.btnAdd.setOnClickListener(new View.OnClickListener() {
+        daftar = getIntent().getParcelableExtra("EXTRA_DATA");
+        String id = daftar.getId();
+
+        binding.etNama.setText(daftar.getNama());
+        binding.etAlamat.setText(daftar.getAlamat());
+        binding.etDeskripsi.setText(daftar.getDeskripsi());
+        binding.btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String nama = binding.etNama.getText().toString();
                 String alamat = binding.etAlamat.getText().toString();
                 String deskripsi= binding.etDeskripsi.getText().toString();
 
-                boolean bolehUnggah = true;
-
+                boolean bolehUpdate = true;
                 if (TextUtils.isEmpty(nama)) {
-                    bolehUnggah = false;
+                    bolehUpdate = false;
                     binding.etNama.setError("Nama tidak boleh kosong!");
                 }
                 if (TextUtils.isEmpty(alamat)) {
-                    bolehUnggah = false;
+                    bolehUpdate = false;
                     binding.etAlamat.setError("Alamat tidak boleh kosong!");
                 }
                 if (TextUtils.isEmpty(deskripsi)) {
-                    bolehUnggah = false;
+                    bolehUpdate = false;
                     binding.etDeskripsi.setError("Nama tidak boleh kosong!");
                 }
 
-                if (bolehUnggah) {
-                    String userId = Utilities.getValue(AddUnggahActivity.this, "xUsername");
-                    addUnggah(userId,nama,alamat,deskripsi);
+
+                if (bolehUpdate) {
+                    updateUnggah(id,nama,alamat,deskripsi);
                 }
             }
         });
     }
 
-    private void addUnggah(String userId, String nama, String alamat, String deskripsi) {
+    private void updateUnggah(String userId, String nama , String alamat , String deskripsi) {
         binding.progressBar.setVisibility(View.VISIBLE);
-        // proses untuk mengunggah konten ....
-        binding.progressBar.setVisibility(View.GONE);
-    }
 
+        binding.progressBar.setVisibility(View.GONE);
+
+    }
     @Override
     public void onBackPressed() {
         super.onBackPressed();

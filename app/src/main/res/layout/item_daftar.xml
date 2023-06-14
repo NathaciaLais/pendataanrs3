@@ -24,22 +24,22 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 tools:text="Nama Rumah Sakit"/>
+
+            <TextView
+                android:id="@+id/tv_alamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_nama"
+                android:layout_marginTop="2dp"
+                tools:text="Alamat Rumah Sakit"/>
             <TextView
                 android:id="@+id/tv_deskripsi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
-                android:layout_below="@+id/tv_nama"
+                android:layout_below="@+id/tv_alamat"
                 android:layout_marginTop="2dp"
                 tools:text="Deskripsi" />
-            <TextView
-                android:id="@+id/tv_created_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_deskripsi"
-                android:layout_marginTop="2dp"
-                android:textAlignment="textEnd"
-                tools:text="01-01-2023 20:20:00"/>
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
