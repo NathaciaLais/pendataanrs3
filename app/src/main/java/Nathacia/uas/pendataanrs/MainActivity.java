@@ -16,9 +16,8 @@ import Nathacia.uas.pendataanrs.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
-    private List<Daftar>data;
     private DaftarViewAdapter daftarViewAdapter;
-
+    private List<Daftar>data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
         daftarViewAdapter = new DaftarViewAdapter();
-        binding.rvUnggah.setLayoutManager(new LinearLayoutManager(this));
-        binding.rvUnggah.setAdapter(daftarViewAdapter);
+        binding.rvDaftar.setLayoutManager(new LinearLayoutManager(this));
+        binding.rvDaftar.setAdapter(daftarViewAdapter);
 
         binding.fabInput.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main,menu);
+        getMenuInflater().inflate(R.menu.menu_rs,menu);
         return true;
     }
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

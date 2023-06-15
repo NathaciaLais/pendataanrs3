@@ -76,24 +76,24 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ValueData<User>> call, Response<ValueData<User>> response) {
                 binding.progressBar.setVisibility(View.GONE);
-                if (response.code()==200){
+                if (response.code()==200) {
                     int success = response.body().getSuccess();
                     String message = response.body().getMessage();
-                    if (success==1){
+                    if (success == 1) {
                         User user = response.body().getData();
-                        Toast.makeText(RegisterActivity.this, Toast.LENGTH_SHORT).show();
-                        Utilities.setValue(RegisterActivity.this,"xUserId",response.body());
-                        Utilities.setValue(RegisterActivity.this,"xUsername",username);
-                        Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
+                        Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_SHORT).show();
+                        Utilities.setValue(RegisterActivity.this, "xUserId", user.getId());
+                        Utilities.setValue(RegisterActivity.this, "xUsername", username);
+                        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                         startActivity(intent);
                         finish();
-                    }else {
-                        Toast.makeText(RegisterActivity.this,message,Toast.LENGTH_SHORT).show();
-                    }else {
+                    } else {
+                        Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_SHORT).show();
+                    }
+                }else {
                         Toast.makeText(RegisterActivity.this, "Response" + response.code(), Toast.LENGTH_SHORT).show();
                     }
                 }
-            }
 
             @Override
             public void onFailure(Call<ValueData<User>> call, Throwable t) {
