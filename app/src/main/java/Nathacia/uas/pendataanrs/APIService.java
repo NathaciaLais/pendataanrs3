@@ -35,13 +35,13 @@ public interface APIService {
 
     @FormUrlEncoded
     @PUT("pendataanrs")
-    Call<ValueNulData>updateShoes(@Field("id")String id,
+    Call<ValueNulData>updatePendataanrs(@Field("id")String id,
                                  @Field("nama")String namarumahsakit,
                                  @Field("alamat")String alamatrumahsakit,
                                  @Field("deskripsi")String deskripsi);
 
     @DELETE("pendataanrs/{id}")
-    Call<ValueNulData> deletependataanrs(@Path("id")String id);
+    Call<ValueNulData> deletePendataanrs(@Path("id")String id);
 
 
 }
