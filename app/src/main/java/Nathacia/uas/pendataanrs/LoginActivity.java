@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.telecom.Call;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
@@ -55,6 +56,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private void login(String username, String password) {
         binding.progressBar.setVisibility(View.VISIBLE);
+        APIService api = Utilities.getRetrofit().create(APIService.class);
+        Call<ValueData<User>> call= api.login(username,password);
         Toast.makeText(LoginActivity.this, "Login success!", Toast.LENGTH_SHORT).show();
         Utilities.setValue(LoginActivity.this, "xUsername", username);
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
