@@ -7,13 +7,6 @@ public class User implements Parcelable {
     private String id;
     private String username;
 
-
-    public User(String id, String username, String created_date, String modified_date) {
-        this.id = id;
-        this.username = username;
-
-    }
-
     protected User(Parcel in) {
         id = in.readString();
         username = in.readString();

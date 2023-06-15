@@ -8,12 +8,14 @@ public class Daftar implements Parcelable {
     private String nama;
     private String alamat;
     private String deskripsi;
+    private String user_id;
 
     protected Daftar(Parcel in) {
         id = in.readString();
         nama = in.readString();
         alamat = in.readString();
         deskripsi = in.readString();
+        user_id = in.readString();
     }
 
     @Override
@@ -22,11 +24,20 @@ public class Daftar implements Parcelable {
         dest.writeString(nama);
         dest.writeString(alamat);
         dest.writeString(deskripsi);
+        dest.writeString(user_id);
     }
 
     @Override
     public int describeContents() {
         return 0;
+    }
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
     public static final Creator<Daftar> CREATOR = new Creator<Daftar>() {

@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Utilities {
     public static final String PREFERENCE_FILE_KEY = Utilities.class.getPackage().getName();
-    private static final String BASE_URl ="";
+    private static final String BASE_URl ="https://pendataanrs-restapi.vercel.app/";
     public static Retrofit retrofit;
 
     public static Retrofit getRetrofit(){
@@ -25,7 +25,6 @@ public class Utilities {
         SharedPreferences sp = context.getSharedPreferences(PREFERENCE_FILE_KEY, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.putString("xUserId", null);
-        editor.putString("xUsername",null);
         editor.apply();
     }
 

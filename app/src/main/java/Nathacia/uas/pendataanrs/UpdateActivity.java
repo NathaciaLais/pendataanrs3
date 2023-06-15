@@ -8,14 +8,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.core.view.WindowCompat;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+
 
 import Nathacia.uas.pendataanrs.databinding.ActivityUpdateBinding;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class UpdateActivity extends AppCompatActivity {
 
@@ -63,10 +64,40 @@ public class UpdateActivity extends AppCompatActivity {
         });
     }
 
-    private void updateUnggah(String userId, String nama , String alamat , String deskripsi) {
+    private void updateUnggah(String id, String nama , String alamat , String deskripsi) {
         binding.progressBar.setVisibility(View.VISIBLE);
+        APIService api = Utilities.getRetrofit().create(APIService.class);
+        Call<ValueNulData>call = api.updatePendataanrs(nama,alamat,deskripsi,id);
+        call.enqueue(new Callback<ValueNulData>() {
+            @Override
+            public void onResponse(Call<ValueNulData> call, Response<ValueNulData> response) {
+                binding.progressBar.setVisibility(View.GONE);
+                if (response.code()==200){
+                    int success = response.body().getSuccess();
+                    String message = response.body().getMessage();
 
-        binding.progressBar.setVisibility(View.GONE);
+                    if (success == 1){
+                        Toast.makeText(UpdateActivity.this, message, Toast.LENGTH_SHORT).show();
+                        finish();
+                    }else {
+                        Toast.makeText(UpdateActivity.this, message, Toast.LENGTH_SHORT).show();
+                    }
+
+                }else {
+                    Toast.makeText(UpdateActivity.this, "Response", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ValueNulData> call, Throwable t) {
+                binding.progressBar.setVisibility(View.GONE);
+                System.out.println("Retrofit Error :"+t.getMessage());
+                Toast.makeText(UpdateActivity.this, "Retrofit Error :"+t.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
 
     }
     @Override

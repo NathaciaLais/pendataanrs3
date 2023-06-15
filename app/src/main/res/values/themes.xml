@@ -4,6 +4,10 @@
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">#3F51B5</item>
     </style>
-
-    <style name="Theme.Pendataanrs" parent="Base.Theme.Pendataanrs" />
+    <style name="Base.Theme.Pendataanrs..ActionBar" parent="Theme.Material3.DayNight">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+    <style name="Theme.Pendataanrs." parent="Base.Theme.Pendataanrs" />
+    <style name="Theme.Pendataanrs..ActionBar" parent="Base.Theme.Pendataanrs..ActionBar" />
 </resources>
