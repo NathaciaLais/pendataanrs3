@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Nathacia.uas.pendataanrs.databinding.ActivityMainBinding;
@@ -25,7 +26,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private DaftarViewAdapter daftarViewAdapter;
-    private List<Daftar> data;
+    private List<Daftar> data = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,16 +54,16 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                         int idMenu = item.getItemId();
-                        if (idMenu==R.id.action_edit){
+                        if (idMenu == R.id.action_edit) {
                             Intent intent = new Intent(MainActivity.this, UpdateActivity.class);
-                            intent.putExtra("EXTRA_DATA",daftar);
+                            intent.putExtra("EXTRA_DATA", daftar);
                             startActivity(intent);
                             return true;
-                        } else  if (idMenu==R.id.action_delete){
+                        } else if (idMenu == R.id.action_delete) {
                             String id = daftar.getId();
                             AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                             builder.setTitle("Konfirmasi");
-                            builder.setMessage("Yakin Ingin Menghapus "+data.get(position).getNama()+data.get(position).getAlamat()+data.get(position).getDeskripsi()+"?");
+                            builder.setMessage("Yakin Ingin Menghapus " + data.get(position).getNama() + data.get(position).getAlamat() + data.get(position).getDeskripsi() + "?");
                             builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                             AlertDialog alertDialog = builder.create();
                             alertDialog.show();
                             return true;
-                        }else {
+                        } else {
                             return false;
                         }
                     }
@@ -90,11 +91,18 @@ public class MainActivity extends AppCompatActivity {
         binding.fabInput.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,AddUnggahActivity.class);
+                Intent intent = new Intent(MainActivity.this, AddUnggahActivity.class);
                 startActivity(intent);
             }
         });
-            }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getAllDaftar();
+    }
+
     private void deleteTampil(String id) {
         APIService api = Utilities.getRetrofit().create(APIService.class);
         Call<ValueNulData> call = api.deletePendataanrs(id);
@@ -137,14 +145,14 @@ public class MainActivity extends AppCompatActivity {
                 if (response.code() == 200) {
                     int success = response.body().getSuccess();
                     String message = response.body().getMessage();
-                    if (success == 1){
+                    if (success == 1) {
                         Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
                         data = response.body().getData();
                         daftarViewAdapter.setData(data);
-                    }else {
+                    } else {
                         Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
                     }
-                }else {
+                } else {
                     Toast.makeText(MainActivity.this, "Response", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -158,11 +166,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_rs,menu);
+        getMenuInflater().inflate(R.menu.menu_rs, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
